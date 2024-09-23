@@ -10,7 +10,7 @@ public class MinStackTest {
         stack.push(2);
         stack.push(5);
         stack.push(1);
-        assertEquals(1,stack.showMin());
+        assertEquals(1,stack.min());
     }
     @Test
     public void test2(){
@@ -19,6 +19,17 @@ public class MinStackTest {
         stack.push(2);
         stack.push(3);
         stack.push(4);
-        assertEquals(1,stack.showMin());
+        assertEquals(1,stack.min());
+    }
+    @Test
+    public void test3(){
+        MinStack stack = new MinStack();
+        stack.push(3);
+        stack.push(2);
+        stack.push(5);
+        stack.push(1);
+
+        stack.pop();
+        assertEquals(2,stack.min());
     }
 }

@@ -1,26 +1,30 @@
 import java.util.Stack;
 
 public class MinStack {
-    private Stack<Integer>st;
-    private int min;
-    public MinStack(){
-        st = new Stack<>();
-        min = 10000;
+    private Stack<Integer> stack;
+    private Stack<Integer> minStack;
+    public MinStack() {
+        stack = new Stack<>();
+        minStack = new Stack<>();
     }
-
-    public void push(int a){
-        st.push(a);
-        min(a);
-    }
-    private void min(int a){
-        if(a<min){
-            min=a;
+    public void push(int x) {
+        stack.push(x);
+        if (minStack.isEmpty() || x <= minStack.peek()) {
+            minStack.push(x);
         }
     }
-    public void pop(){
-        st.pop();
+    public void pop() {
+        if (!stack.isEmpty()) {
+            int popped = stack.pop();
+            if (popped == minStack.peek()) {
+                minStack.pop();
+            }
+        }
     }
-    public int showMin(){
-        return min;
+    public int top() {
+        return stack.peek();
+    }
+    public int min() {
+        return minStack.peek();
     }
 }
